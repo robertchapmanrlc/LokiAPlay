@@ -1,0 +1,153 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Assets/Animations/Player/Player_Idle/player_idle07.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Animations/Player/Player_Idle/player_idle00.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Animations/Player/Player_Idle/player_idle02.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Animations/Player/Player_Idle/player_idle03.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Animations/Player/Player_Idle/player_idle06.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Animations/Player/Player_Idle/player_idle09.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Animations/Player/Player_Idle/player_idle10.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Animations/Player/Player_Idle/player_idle01.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Animations/Player/Player_Idle/player_idle05.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Animations/Player/Player_Idle/player_idle04.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Animations/Player/Player_Idle/player_idle08.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Animations/Player/Player_Idle/player_idle11.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/Player.cs" type="Script" id=13]
+[ext_resource path="res://Assets/Animations/Player/Player_walking/Player_walking_sheet.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Animations/Player/Player_jumping/Player_jumping_sheet.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Animations/Player/Player_jumping/Player_falling_sheet.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Stills/Player/Player_wallSlide.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Stills/Player/Player_wallKick.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sounds/WallKick.wav" type="AudioStream" id=19]
+[ext_resource path="res://Assets/Sounds/WallKick2.wav" type="AudioStream" id=20]
+[ext_resource path="res://Assets/Sounds/Jump.wav" type="AudioStream" id=21]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2.5, 6.5 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 16 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 15 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 15 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 14 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 14 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 14 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 14 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 14 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 14 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 25 ), SubResource( 26 ) ],
+"loop": false,
+"name": "falling",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "idle",
+"speed": 20.0
+}, {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": false,
+"name": "jumping",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"loop": true,
+"name": "walking",
+"speed": 9.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": false,
+"name": "wallKick",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": false,
+"name": "wallSlide",
+"speed": 1.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 62
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2( 0.5, 0.5 )
+shape = SubResource( 1 )
+
+[node name="Sprites" type="AnimatedSprite" parent="."]
+light_mask = 2
+frames = SubResource( 2 )
+animation = "idle"
+frame = 5
+playing = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+light_mask = 2
+current = true
+zoom = Vector2( 0.2, 0.2 )
+
+[node name="rightRayCast" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 4, 0 )
+collision_mask = 8
+
+[node name="leftRayCast" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( -4, 0 )
+collision_mask = 8
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 21 )
+volume_db = 3.0
+
+[node name="WallKick1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 19 )
+
+[node name="WallKick2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 20 )
+volume_db = 2.0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Golem Walking(Loud).wav-a220f1dba20618c0f6bd0090e90ae21c.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Golem Walking(Loud).wav"
+dest_files=[ "res://.import/Golem Walking(Loud).wav-a220f1dba20618c0f6bd0090e90ae21c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

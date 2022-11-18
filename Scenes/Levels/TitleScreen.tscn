@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Stills/Backgrounds/TitleScreen.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Stills/Backgrounds/Start.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/TitleScreen.cs" type="Script" id=3]
+[ext_resource path="res://Assets/Music/TitleScreen.mp3" type="AudioStream" id=4]
+
+[node name="TitleScreen" type="TextureRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 398.0
+margin_top = 259.0
+margin_right = 639.0
+margin_bottom = 378.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
