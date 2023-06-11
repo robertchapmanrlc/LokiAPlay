@@ -125,6 +125,10 @@ public class Player : KinematicBody2D
 		if(Input.IsActionJustPressed("jump")){
 			jumpTimer = jumpBufferWindow;
 		}
+
+		if(Input.IsActionJustReleased("jump") && velocity.y < JUMP_FORCE/2){
+			velocity.y = JUMP_FORCE/2;
+		}
 		
 		if(jumpTimer > 0 && ledgeJumpTimer > 0){
 			jumping = true;
